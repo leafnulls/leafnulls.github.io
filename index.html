@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Miguel</title>
+	</head>
+    
+    <style type="text/css">
+    	
+        *{
+            margin:0;
+            padding:0;
+          /*  border:1px solid red;*/
+        }
+        
+        body{
+           background:#000;
+           height:100vh;
+           display:flex;
+           align-items:center;
+           justify-content:center;
+           overflow:hidden;
+        }    
+        
+        
+        .man{
+            position: relative;
+            
+        }    
+        
+        .man .mu{
+            animation:fish 2s ease-in-out infinite alternate;
+        }    
+        
+        .man .gd{
+          color:white;  
+          position: absolute;
+          top:0;
+          font-size:1.1em;
+          left:0;
+          transform:translate(-50%,0px);
+          animation:ani 1s ease-out forwards;
+        }    
+        
+        @keyframes ani{
+            0%{
+                transform:translate(-50%,0px);
+                opacity: 1;
+            }
+            100%{
+                transform:translate(-50%,-30px);
+                opacity: 0;
+            }
+        }
+        
+        
+         @keyframes fish{
+            0%{
+                transform:scale(1);
+                opacity: 1;
+            }
+            100%{
+                transform:scale(1.1);
+                opacity: 1;
+            }
+        }
+        
+        
+        .man .mu img{
+          width:130px;
+          height:130px;  
+          transition:0.1s ease-out;
+          
+        }    
+        
+        
+        
+    </style>
+    
+    
+	<body>
+		<div class="man">
+         <div class = "mu">
+            <img src="src/yu2.png"/>
+         </div>  
+          <audio id="clickSound" preload="auto">
+          <source src="src/patata.mp3" type="audio/mpeg">
+       </audio>
+       
+       
+          
+         <!-- <div class = "gd">功德+1</div>-->
+        <div>
+	</body>
+    <script>
+      
+       const muyu = document.querySelector(".man .mu img")
+       const man = document.querySelector(".man")
+       const music = document.querySelector(".man #clickSound")
+       
+       muyu.onclick=func
+       
+       //自动敲
+       setInterval(func,800)
+       
+       function func(){
+           muyu.style.transform = "scale(1.2)"
+           setTimeout(_=>{
+               muyu.style.transform = "scale(1)"
+           },100);
+           
+           music.play()
+           music.currentTime = 0
+           
+           let zi = document.createElement("div")
+           zi.className = "gd"
+           zi.textContent = "西语成绩+1"
+           man.appendChild(zi)
+           
+           setTimeout(()=>{
+               zi.remove()
+           },1000);
+       }    
+      
+    </script>
+</html>
